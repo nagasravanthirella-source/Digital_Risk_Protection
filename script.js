@@ -4,7 +4,7 @@
    Frontend + Flask backend connection
    ========================================= */
 
-const API_BASE = "http://127.0.0.1:5000/api";
+const API_BASE = "https://sravanthi1234.pythonanywhere.com";
 
 // Safely read saved information from the browser
 function readStorage(key, fallback) {
