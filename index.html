@@ -1,0 +1,450 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kampus.VC helps companies monitor possible fake apps, social profiles, and brand impersonation.">
+    <title>Kampus.VC | Digital Risk Protection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>🛡️ Kampus<span>.VC</span></h2>
+        <p class="menu-title">MAIN MENU</p>
+
+        <button type="button" class="nav active"
+                onclick="showPage('dashboard')">
+            Dashboard
+        </button>
+
+        <button type="button" class="nav"
+                onclick="showPage('brand')">
+            Brand Profile
+        </button>
+
+        <button type="button" class="nav"
+                onclick="showPage('social')">
+            Social Monitoring
+        </button>
+
+        <button type="button" class="nav"
+                onclick="showPage('apps')">
+            App Monitoring
+        </button>
+
+        <button type="button" class="nav"
+                onclick="showPage('alerts')">
+            Risk Alerts
+        </button>
+
+        <p class="sidebar-bottom">● Demo Monitoring Active</p>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+
+        <header>
+            <div>
+                <p class="muted">SECURITY / OVERVIEW</p>
+                <h1 id="pageTitle">Digital Risk Dashboard</h1>
+                <p>Protect your company from possible fake apps and profiles.</p>
+            </div>
+
+            <span class="status">● System Online</span>
+        </header>
+
+        <!-- Dashboard -->
+        <section id="dashboard" class="page">
+
+            <div class="stats">
+
+                <div class="card">
+                    <p>Monitored Brands</p>
+                    <h2 id="brandCount">0</h2>
+                </div>
+
+                <div class="card">
+                    <p>Social Profiles Checked</p>
+                    <h2 id="socialCount">0</h2>
+                </div>
+
+                <div class="card">
+                    <p>Applications Checked</p>
+                    <h2 id="appCount">0</h2>
+                </div>
+
+                <div class="card">
+                    <p>Potential Risks</p>
+                    <h2 id="riskCount">0</h2>
+                </div>
+
+            </div>
+
+            <div class="card">
+                <h2>Welcome to Kampus.VC</h2>
+
+                <p>
+                    Register your official company details and review
+                    possible fake social profiles, copied logos,
+                    suspicious accounts, and mobile applications.
+                </p>
+
+                <button type="button"
+                        onclick="showPage('brand')">
+                    Register Your Company →
+                </button>
+
+                <button type="button"
+                        onclick="showPage('social')">
+                    Check a Social Profile →
+                </button>
+
+                <button type="button"
+                        onclick="showPage('apps')">
+                    Check an Application →
+                </button>
+            </div>
+
+            <div class="card">
+                <h2>Recent Risk Alerts</h2>
+                <div id="recentAlerts">
+                    No alerts yet. Register a company and review possible risks.
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Official Company Registration -->
+        <section id="brand" class="page hidden">
+
+            <div class="card">
+
+                <h2>Register Your Company</h2>
+
+                <p>
+                    Add your official company information so that
+                    possible fake apps and accounts can be compared
+                    with your genuine brand details.
+                </p>
+
+                <form id="brandForm">
+
+                    <label for="brandName">
+                        Company / Brand Name *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="brandName"
+                        placeholder="e.g. ABC Technologies"
+                        required
+                    >
+
+                    <label for="brandWebsite">
+                        Official Website *
+                    </label>
+
+                    <input
+                        type="url"
+                        id="brandWebsite"
+                        placeholder="https://example.com"
+                        required
+                    >
+
+                    <label for="officialSocial">
+                        Official Social Account Links
+                    </label>
+
+                    <textarea
+                        id="officialSocial"
+                        placeholder="Enter official social account links"
+                        rows="3"
+                    ></textarea>
+
+                    <label for="officialApps">
+                        Official Mobile Application Names
+                    </label>
+
+                    <textarea
+                        id="officialApps"
+                        placeholder="Enter official app names and store links"
+                        rows="3"
+                    ></textarea>
+
+                    <label for="officialLogo">
+                        Official Brand Logo *
+                    </label>
+
+                    <input
+                        type="file"
+                        id="officialLogo"
+                        accept="image/png,image/jpeg,image/webp"
+                        required
+                    >
+
+                    <img
+                        id="logoPreview"
+                        alt="Official brand logo preview"
+                        style="max-width:120px; max-height:120px; display:none; margin-top:10px;"
+                    >
+
+                    <label for="brandIdentifiers">
+                        Other Brand Details
+                    </label>
+
+                    <textarea
+                        id="brandIdentifiers"
+                        placeholder="Official support email, product names, etc."
+                        rows="3"
+                    ></textarea>
+
+                    <button type="submit">
+                        Register Company
+                    </button>
+
+                </form>
+
+                <p id="brandMessage" role="status"></p>
+
+                <p class="muted">
+                    Demo notice: Submitting this form does not
+                    automatically verify company ownership.
+                </p>
+
+            </div>
+
+            <div class="card">
+                <h2>Registered Brands</h2>
+
+                <p>
+                    Company profiles registered in this demo will
+                    appear here when the registration feature is connected.
+                </p>
+
+                <div id="registeredBrands">
+                    No company profiles displayed yet.
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Social Media Monitoring -->
+        <section id="social" class="page hidden">
+
+            <div class="card">
+
+                <h2>Social Media Monitoring</h2>
+
+                <p>
+                    Review a social profile for possible use of
+                    your company's name, logo, or identity.
+                </p>
+
+                <form id="socialForm">
+
+                    <label for="profileName">
+                        Profile / Page Name *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="profileName"
+                        placeholder="e.g. ABC Support"
+                        required
+                    >
+
+                    <label for="profileUrl">
+                        Profile URL *
+                    </label>
+
+                    <input
+                        type="url"
+                        id="profileUrl"
+                        placeholder="https://example.com/profile"
+                        required
+                    >
+
+                    <label for="platform">
+                        Social Platform
+                    </label>
+
+                    <select id="platform">
+                        <option>Instagram</option>
+                        <option>Facebook</option>
+                        <option>LinkedIn</option>
+                        <option>X</option>
+                        <option>YouTube</option>
+                        <option>Other</option>
+                    </select>
+
+                    <label for="socialDescription">
+                        Profile Bio / Description
+                    </label>
+
+                    <textarea
+                        id="socialDescription"
+                        placeholder="Enter the profile description"
+                        rows="3"
+                    ></textarea>
+
+                    <label for="socialBranding">
+                        Does its branding resemble your official brand?
+                    </label>
+
+                    <select id="socialBranding">
+                        <option value="unknown">Not checked</option>
+                        <option value="yes">Yes, similar branding</option>
+                        <option value="no">No obvious similarity</option>
+                    </select>
+
+                    <label for="socialSignal">
+                        Suspicious Indicator
+                    </label>
+
+                    <select id="socialSignal">
+                        <option value="low">No obvious indicators</option>
+                        <option value="medium">Similar brand name</option>
+                        <option value="medium">Copied brand logo</option>
+                        <option value="high">Suspicious payment request</option>
+                        <option value="high">Multiple suspicious indicators</option>
+                    </select>
+
+                    <button type="submit">
+                        Analyze Profile
+                    </button>
+
+                </form>
+
+                <div id="socialResult" aria-live="polite"></div>
+
+            </div>
+
+        </section>
+
+        <!-- App Monitoring -->
+        <section id="apps" class="page hidden">
+
+            <div class="card">
+
+                <h2>App Store Monitoring</h2>
+
+                <p>
+                    Review an application for possible use of
+                    your company's name, logo, or identity.
+                </p>
+
+                <form id="appForm">
+
+                    <label for="appName">
+                        Application Name *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="appName"
+                        placeholder="e.g. ABC Wallet"
+                        required
+                    >
+
+                    <label for="developer">
+                        Developer / Publisher *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="developer"
+                        placeholder="Developer name"
+                        required
+                    >
+
+                    <label for="store">
+                        Application Store
+                    </label>
+
+                    <select id="store">
+                        <option>Google Play</option>
+                        <option>Apple App Store</option>
+                        <option>Other</option>
+                    </select>
+
+                    <label for="appDescription">
+                        App Description
+                    </label>
+
+                    <textarea
+                        id="appDescription"
+                        placeholder="Enter the app description"
+                        rows="3"
+                    ></textarea>
+
+                    <label for="appBranding">
+                        Does its logo or branding resemble the official brand?
+                    </label>
+
+                    <select id="appBranding">
+                        <option value="unknown">Not checked</option>
+                        <option value="yes">Yes, similar branding</option>
+                        <option value="no">No obvious similarity</option>
+                    </select>
+
+                    <label for="appSignal">
+                        Suspicious Indicator
+                    </label>
+
+                    <select id="appSignal">
+                        <option value="low">No obvious indicators</option>
+                        <option value="medium">Similar application name</option>
+                        <option value="medium">Similar logo or description</option>
+                        <option value="medium">Unknown publisher</option>
+                        <option value="high">Multiple suspicious indicators</option>
+                    </select>
+
+                    <button type="submit">
+                        Analyze Application
+                    </button>
+
+                </form>
+
+                <div id="appResult" aria-live="polite"></div>
+
+            </div>
+
+        </section>
+
+        <!-- Risk Alerts -->
+        <section id="alerts" class="page hidden">
+
+            <div class="card">
+
+                <h2>Risk Alerts</h2>
+
+                <p>
+                    Review possible fake profiles and applications
+                    identified by the monitoring system.
+                </p>
+
+                <div id="allAlerts">
+                    No alerts yet.
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            Kampus.VC | Digital Risk Protection Platform
+            <br>
+            Hackathon prototype · Rule-based detection
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
